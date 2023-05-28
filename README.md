@@ -24,6 +24,10 @@ and deleting transactions, as well as generating a financial report.
 1. Clone the repository: `git clone https://github.com/aasthak108/MyFinance.git`
 2. Open the project directory: `cd personal-finance-tracker`
 
+## Acknowledgements
+
+- [GitHub Copilot](https://copilot.github.com/) - AI-powered coding assistant that helped in generating code snippets and providing suggestions during development.
+
 ## Deployment
 
 This project has been deployed using Azure Static Web Apps.
