@@ -21,8 +21,30 @@ and deleting transactions, as well as generating a financial report.
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/personal-finance-tracker.git`
+1. Clone the repository: `git clone https://github.com/aasthak108/MyFinance.git`
 2. Open the project directory: `cd personal-finance-tracker`
+
+## Deployment
+
+This project has been deployed using Azure Static Web Apps.
+
+You can access the deployed application at https://proud-mud-0a3923f00.3.azurestaticapps.net/.
+
+## Continuous Deployment
+
+The project is set up for continuous deployment, meaning any changes pushed to the main branch will automatically trigger a new deployment on Azure Static Web Apps.
+
+## Environment Variables
+
+If your application requires environment variables for configuration, you can set them in the Azure Static Web Apps portal under the Configuration settings.
+
+## Custom Domain
+
+To use a custom domain with your application, follow the instructions provided by Azure Static Web Apps to configure the custom domain mapping.
+
+## Troubleshooting
+
+If you encounter any issues with the deployed application, please refer to the [Azure Static Web Apps documentation](https://docs.microsoft.com/azure/static-web-apps/) or contact [Azure Support](https://azure.microsoft.com/support/).
 
 ## Usage
 
@@ -30,7 +52,7 @@ and deleting transactions, as well as generating a financial report.
 2. Use the form to add income and expense transactions.
 3. Edit or delete transactions using the provided buttons.
 4. View the transaction list and the current balance.
-5.See the report for overall transactions.
+5. See the report for overall transactions.
 ## Contributing
 
 Contributions are welcome! If you have any suggestions, improvements, or bug fixes, please submit a pull request.
