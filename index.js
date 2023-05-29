@@ -18,7 +18,6 @@ function generateID() {
 }
 
 // Function to add a transaction
-// Function to add a transaction
 function addTransaction(event) {
     event.preventDefault();
 
@@ -40,8 +39,6 @@ function addTransaction(event) {
     displayReport(); // Update the report after adding a transaction
 }
 
-
-// Function to edit a transaction
 // Function to edit a transaction
 function editTransaction(id) {
     const transaction = transactions.find(transaction => transaction.id === id);
@@ -50,14 +47,17 @@ function editTransaction(id) {
     descriptionInput.value = transaction.description;
     amountInput.value = transaction.amount;
     transactionTypeInput.value = transaction.transactionType;
-
-    // Remove the transaction from the list temporarily
-    transactions = transactions.filter(transaction => transaction.id !== id);
-
-    // Update the transaction list and balance
     updateTransactions();
     updateBalance();
     displayReport(); // Update the report after editing a transaction
+}
+
+// Function to delete a transaction
+function deleteTransaction(id) {
+    transactions = transactions.filter(transaction => transaction.id !== id);
+    updateTransactions();
+    updateBalance();
+    displayReport(); // Update the report after deleting a transaction
 }
 
 // Function to update the transaction list
@@ -118,26 +118,7 @@ function clearInputs() {
     amountInput.value = '';
 }
 
-// Initializing the transaction list and balance
-updateTransactions();
-updateBalance();
-function handleResize() {
-    const screenWidth = window.innerWidth;
-  
-    if (screenWidth >= 600) {
-        document.body.style.backgroundColor = 'yellow';
-        }
-    else {
-        document.body.style.backgroundColor = 'purple';
-    }
-    }
-    window.addEventListener('resize', handleResize);
-
-// Calling the handleResize function initially
-handleResize();
-   //
-   //
-   // Function to generate the report
+// Function to generate the report
 // Function to generate the report
 function generateReport() {
     const income = transactions
@@ -147,6 +128,8 @@ function generateReport() {
     const expenses = transactions
         .filter(transaction => transaction.transactionType === 'expense')
         .reduce((total, transaction) => total + transaction.amount, 0);
+
+    const balance = income - expenses;
 
     const reportContent = `
         <div>
@@ -160,20 +143,54 @@ function generateReport() {
             </p>
             <p>
                 <strong>Balance:</strong>
-                ${formatCurrency(income - expenses)}
+                ${formatCurrency(balance)}
             </p>
         </div>
     `;
 
     return reportContent;
-    
 }
+
 // Function to display the report
 function displayReport() {
     const reportContent = generateReport();
     const reportContainer = document.getElementById('report-content');
     reportContainer.innerHTML = reportContent;
 }
-
-// Call the displayReport function to initially display the report
 displayReport();
+// Chart button event listener
+// Chart button event listener
+const chartButton = document.getElementById('chart-button');
+
+chartButton.addEventListener('click', function() {
+    // Get the total income and total expense values from your transactions data
+    const income = transactions
+        .filter(transaction => transaction.transactionType === 'income')
+        .reduce((total, transaction) => total + transaction.amount, 0);
+
+    const expenses = transactions
+        .filter(transaction => transaction.transactionType === 'expense')
+        .reduce((total, transaction) => total + transaction.amount, 0);
+
+    // Get the canvas element
+    const chartCanvas = document.getElementById('chart-canvas');
+
+    // Create a new Chart instance
+    const myChart = new Chart(chartCanvas, {
+        type: 'bar',
+        data: {
+            labels: ['Income', 'Expenses'],
+            datasets: [{
+                label: 'Transaction Summary',
+                data: [income, expenses],
+                backgroundColor: ['#36a2eb', '#ff6384'],
+                borderColor: ['#36a2eb', '#ff6384'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+});
