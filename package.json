@@ -1,0 +1,13 @@
+{
+  "name": "static-web-app",
+  "version": "1.0.0",
+  "description": "Finance Tracking App",
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "sass src/styles/main.scss dist/styles/main.css",
+    "build:js": "your-js-build-command"
+  },
+  "dependencies": {
+    "chart.js": "^4.3.0"
+  }
+}
