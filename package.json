@@ -1,4 +1,12 @@
 {
+  "name": "static-web-app",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "your-css-build-command",
+    "build:js": "your-js-build-command"
+  },
   "dependencies": {
     "chart.js": "^4.3.0"
   }
