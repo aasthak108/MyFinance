@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Finanace</title>
+    <title>Personal Finance Tracker</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="node_modules/chart.js/dist/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
-    <h1>Personal Finance Tracker</h1>
+    <h1>My Finance</h1>
 
     <div class="container">
         <form id="transaction-form">
@@ -31,6 +34,15 @@
         <div id="report-container">
             <h2>Financial Report</h2>
             <div id="report-content"></div>
+        </div>
+
+        <div id="chart-container">
+            <h2>Visualize your Finance</h2>
+            <canvas id="chart-canvas"></canvas>
+            <button id="chart-button">See Financial Overview</button>
+
+        </div>
+        
         </div>
     </div>
 
